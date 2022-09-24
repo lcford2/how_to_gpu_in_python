@@ -1,0 +1,67 @@
+My array mean: <built-in method mean of numpy.ndarray object at 0x2b74aaf54b70>
+10000 32 313
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n3h35>
+Subject: Job 810462: <pycuda_ex> in cluster <henry2> Done
+
+Job <pycuda_ex> was submitted from host <login03> by user <lcford2> in cluster <henry2> at Sat Sep 24 08:17:13 2022
+Job was executed on host(s) <n3h35>, in queue <gpu>, as user <lcford2> in cluster <henry2> at Sat Sep 24 08:17:20 2022
+</home/lcford2> was used as the home directory.
+</home/lcford2/how_to_gpu_in_python/scripts/numba> was used as the working directory.
+Started at Sat Sep 24 08:17:20 2022
+Terminated at Sat Sep 24 08:17:24 2022
+Results reported at Sat Sep 24 08:17:24 2022
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/tcsh
+#BSUB -n 1
+#BSUB -W 1000
+#BSUB -J pycuda_ex
+#BSUB -o stdout.%J
+#BSUB -e stderr.%J
+#BSUB -q gpu
+#BSUB -gpu "num=1:mode=shared:mps=yes"
+#BSUB -R "select[rtx2080]"
+
+module load PrgEnv-intel
+module load cuda/11.0
+module load conda
+
+conda activate /usr/local/usrapps/ce791/conda_envs/gpu-env
+setenv NUMBA_CUDA_USE_NVIDIA_BINDING "1"
+
+cd /home/lcford2/how_to_gpu_in_python/scripts/numba
+
+python numba_ex.py
+
+conda deactivate
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   1.97 sec.
+    Max Memory :                                 2.42 MB
+    Average Memory :                             2.42 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                4
+    Run time :                                   10 sec.
+    Turnaround time :                            11 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <stderr.810462> for stderr output of this job.
+

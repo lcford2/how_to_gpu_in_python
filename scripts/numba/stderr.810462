@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "/home/lcford2/how_to_gpu_in_python/scripts/numba/numba_ex.py", line 20, in <module>
+    increment_by_one[blocks_per_grid, threads_per_block](my_array)
+  File "/usr/local/usrapps/ce791/conda_envs/gpu-env/lib/python3.9/site-packages/numba/cuda/compiler.py", line 862, in __getitem__
+    return self.configure(*args)
+  File "/usr/local/usrapps/ce791/conda_envs/gpu-env/lib/python3.9/site-packages/numba/cuda/compiler.py", line 857, in configure
+    return _KernelConfiguration(self, griddim, blockdim, stream, sharedmem)
+  File "/usr/local/usrapps/ce791/conda_envs/gpu-env/lib/python3.9/site-packages/numba/cuda/compiler.py", line 718, in __init__
+    ctx = get_context()
+  File "/usr/local/usrapps/ce791/conda_envs/gpu-env/lib/python3.9/site-packages/numba/cuda/cudadrv/devices.py", line 220, in get_context
+    return _runtime.get_or_create_context(devnum)
+  File "/usr/local/usrapps/ce791/conda_envs/gpu-env/lib/python3.9/site-packages/numba/cuda/cudadrv/devices.py", line 138, in get_or_create_context
+    return self._get_or_create_context_uncached(devnum)
+  File "/usr/local/usrapps/ce791/conda_envs/gpu-env/lib/python3.9/site-packages/numba/cuda/cudadrv/devices.py", line 153, in _get_or_create_context_uncached
+    with driver.get_active_context() as ac:
+  File "/usr/local/usrapps/ce791/conda_envs/gpu-env/lib/python3.9/site-packages/numba/cuda/cudadrv/driver.py", line 482, in __enter__
+    hctx = driver.cuCtxGetCurrent()
+  File "/usr/local/usrapps/ce791/conda_envs/gpu-env/lib/python3.9/site-packages/numba/cuda/cudadrv/driver.py", line 284, in __getattr__
+    self.ensure_initialized()
+  File "/usr/local/usrapps/ce791/conda_envs/gpu-env/lib/python3.9/site-packages/numba/cuda/cudadrv/driver.py", line 246, in ensure_initialized
+    self.cuInit(0)
+  File "/usr/local/usrapps/ce791/conda_envs/gpu-env/lib/python3.9/site-packages/numba/cuda/cudadrv/driver.py", line 340, in safe_cuda_api_call
+    return self._check_cuda_python_error(fname, libfn(*args))
+  File "cuda/cuda.pyx", line 10728, in cuda.cuda.cuInit
+  File "/usr/local/usrapps/ce791/conda_envs/gpu-env/lib/python3.9/enum.py", line 384, in __call__
+    return cls.__new__(cls, value)
+  File "/usr/local/usrapps/ce791/conda_envs/gpu-env/lib/python3.9/enum.py", line 702, in __new__
+    raise ve_exc
+ValueError: 4294967295 is not a valid CUresult
